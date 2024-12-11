@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<robot name="my_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Parameters -->
+    <xacro:property name="base_width" value="1.0" />
+    <xacro:property name="base_mass" value="3.72456877893911" />
+    <xacro:property name="wheel_mass" value="0.169060280702519" />
+    <xacro:property name="blue_material" value="blue" />
+    <xacro:property name="black_material" value="black" />
+
+    <!-- Base Footprint -->
+    <link name="base_footprint" />
+
+    <!-- Base Link -->
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <mass value="${base_mass}" />
+            <inertia
+                ixx="0.00777824335300896"
+                ixy="2.13589194767825E-06"
+                ixz="-7.76430486977968E-07"
+                iyy="0.00778071037270559"
+                iyz="-4.552360831811E-07"
+                izz="0.0150156106242929" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://my_robot_description/meshes/autobot/base_link.STL" />
+            </geometry>
+            <material name="${blue_material}" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://my_robot_description/meshes/autobot/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="base_joint" type="fixed">
+        <parent link="base_footprint" />
+        <child link="base_link" />
+        <origin xyz="0 0 0.02435" rpy="0 0 0" />
+    </joint>
+
+    <!-- Right Wheel -->
+    <link name="right_wheel">
+        <inertial>
+            <origin xyz="0.05023 0 -0.029" rpy="0 0 0" />
+            <mass value="${wheel_mass}" />
+            <inertia
+                ixx="6.81656459654292E-05"
+                ixy="1.09934718562429E-16"
+                ixz="-1.53690933567199E-05"
+                iyy="4.15455954052914E-05"
+                iyz="1.9041723013586E-16"
+                izz="5.0418945592025E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://my_robot_description/meshes/autobot/right_wheel.STL" />
+            </geometry>
+            <material name="${black_material}" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://my_robot_description/meshes/autobot/right_wheel.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="rightwheel" type="continuous">
+        <origin xyz="0.23043 -0.13304 0.01805" rpy="-1.5708 0 3.1416" />
+        <parent link="base_link" />
+        <child link="right_wheel" />
+        <axis xyz="0.86603 0 -0.5" />
+        <limit effort="10" velocity="10" />
+        <dynamics damping="0.1" friction="0.1" />
+    </joint>
+
+    <!-- Left Wheel -->
+    <link name="left_wheel">
+        <inertial>
+            <origin xyz="-0.05023 0 -0.029" rpy="0 0 0" />
+            <mass value="${wheel_mass}" />
+            <inertia
+                ixx="6.816564596543E-05"
+                ixy="1.09821584456127E-16"
+                ixz="1.53690933567195E-05"
+                iyy="4.15455954052906E-05"
+                iyz="-1.90474672857433E-16"
+                izz="5.04189455920233E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://my_robot_description/meshes/autobot/left_wheel.STL" />
+            </geometry>
+            <material name="${black_material}" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://my_robot_description/meshes/autobot/left_wheel.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="leftwheel" type="continuous">
+        <origin xyz="-0.23043 -0.13304 0.01805" rpy="-1.5708 0 3.1416" />
+        <parent link="base_link" />
+        <child link="left_wheel" />
+        <axis xyz="-0.86603 0 -0.5" />
+        <limit effort="10" velocity="10" />
+        <dynamics damping="0.1" friction="0.1" />
+    </joint>
+
+    <!-- Front Wheel -->
+    <link name="front_wheel">
+        <inertial>
+            <origin xyz="0 0 -0.058" rpy="0 0 0" />
+            <mass value="${wheel_mass}" />
+            <inertia
+                ixx="4.15455954053262E-05"
+                ixy="2.1988501832539E-16"
+                ixz="1.00585123725223E-18"
+                iyy="4.15455954052956E-05"
+                iyz="-1.97888662321666E-19"
+                izz="7.70389961521322E-05" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://my_robot_description/meshes/autobot/front_wheel.STL" />
+            </geometry>
+            <material name="${black_material}" />
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://my_robot_description/meshes/autobot/front_wheel.STL" />
+            </geometry>
+        </collision>
+    </link>
+
+    <joint name="frontwheel" type="continuous">
+        <origin xyz="0 0.26608 0.01805" rpy="-1.5708 0 0" />
+        <parent link="base_link" />
+        <child link="front_wheel" />
+        <axis xyz="0 0 -1" />
+        <limit effort="10" velocity="10" />
+        <dynamics damping="0.1" friction="0.1" />
+    </joint>
+
+</robot>

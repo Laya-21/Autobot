@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- Define Materials -->
+    <material name="grey">
+        <color rgba="0.7 0.7 0.7 1" />
+    </material>
+    <material name="blue">
+        <color rgba="0 0 1 1" />
+    </material>
+    <material name="white">
+        <color rgba="1 1 1 1" />
+    </material>
+    <material name="black">
+        <color rgba="0 0 0 1" />
+    </material>
+
+    <!-- Box Inertia Macro -->
+    <xacro:macro name="box_inertia" params="m l w h xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="${(m/12) * (h*h + w*w)}" ixy="0" ixz="0"
+                     iyy="${(m/12) * (l*l + h*h)}" iyz="0"
+                     izz="${(m/12) * (l*l + w*w)}" />
+        </inertial>
+    </xacro:macro>
+
+    <!-- Caster Inertia Macro -->
+    <xacro:macro name="caster_inertia" params="m r xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="${(2*m/5) * (r*r)}" ixy="0" ixz="0"
+                     iyy="${(2*m/5) * (r*r)}" iyz="0"
+                     izz="${(2*m/5) * (r*r)}" />
+        </inertial>
+    </xacro:macro>
+
+    <!-- Wheel Inertia Macro -->
+    <xacro:macro name="wheel_inertia" params="m r h xyz rpy">
+        <inertial>
+            <origin xyz="${xyz}" rpy="${rpy}" />
+            <mass value="${m}" />
+            <inertia ixx="${(1/12) * m * (3 * r*r + h*h)}" ixy="0" ixz="0"
+                     iyy="${(1/12) * m * (3 * r*r + h*h)}" iyz="0"
+                     izz="${(1/2) * m * r*r}" />
+        </inertial>
+    </xacro:macro>
+
+</robot>
