@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<launch>
+
+    <!-- Declare URDF path parameter -->
+    <arg name="urdf_path" default="$(find my_robot_description)/xacro/my_robot.urdf.xacro"/>
+
+    <!-- Robot State Publisher Node -->
+    <node pkg="robot_state_publisher" exec="robot_state_publisher" output="screen">
+        <param name="robot_description" command="$(find xacro)/xacro $(arg urdf_path)"/>
+    </node>
+
+    <!-- Control Node -->
+    <node pkg="my_robot_control" exec="control_node" output="screen">
+        <param name="my_robot/parameter/control/I" value="0.0005"/>
+        <param name="my_robot/parameter/control/P" value="5.0"/>
+        <param name="my_robot/parameter/initial/x" value="0.0"/>
+        <param name="my_robot/parameter/initial/y" value="0.0"/>
+        <param name="my_robot/parameter/initial/theta" value="0.0"/>
+        <param name="my_robot/parameter/max/omega" value="50.0"/>
+        <param name="my_robot/parameter/max/v" value="1.0"/>
+        <param name="my_robot/parameter/stop/angle" value="0.10471975511965977"/>
+        <param name="my_robot/parameter/stop/distance" value="0.001"/>
+        <param name="my_robot/parameter/wheel/radius" value="0.01905"/>
+    </node>
+
+</launch>

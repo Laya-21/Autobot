@@ -27,14 +27,14 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://my_robot_description/meshes/autobot/base_link.STL" />
+                <mesh filename="package://my_robot_description/meshes/autobot/base_link.stl" />
             </geometry>
             <material name="${blue_material}" />
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://my_robot_description/meshes/autobot/base_link.STL" />
+                <mesh filename="package://my_robot_description/meshes/autobot/base_link.stl" />
             </geometry>
         </collision>
     </link>
@@ -61,14 +61,14 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://my_robot_description/meshes/autobot/right_wheel.STL" />
+                <mesh filename="package://my_robot_description/meshes/autobot/right_wheel.stl" />
             </geometry>
             <material name="${black_material}" />
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://my_robot_description/meshes/autobot/right_wheel.STL" />
+                <mesh filename="package://my_robot_description/meshes/autobot/right_wheel.stl" />
             </geometry>
         </collision>
     </link>
@@ -98,14 +98,14 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://my_robot_description/meshes/autobot/left_wheel.STL" />
+                <mesh filename="package://my_robot_description/meshes/autobot/left_wheel.stl" />
             </geometry>
             <material name="${black_material}" />
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://my_robot_description/meshes/autobot/left_wheel.STL" />
+                <mesh filename="package://my_robot_description/meshes/autobot/left_wheel.stl" />
             </geometry>
         </collision>
     </link>
@@ -135,14 +135,14 @@
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://my_robot_description/meshes/autobot/front_wheel.STL" />
+                <mesh filename="package://my_robot_description/meshes/autobot/front_wheel.stl" />
             </geometry>
             <material name="${black_material}" />
         </visual>
         <collision>
             <origin xyz="0 0 0" rpy="0 0 0" />
             <geometry>
-                <mesh filename="package://my_robot_description/meshes/autobot/front_wheel.STL" />
+                <mesh filename="package://my_robot_description/meshes/autobot/front_wheel.stl" />
             </geometry>
         </collision>
     </link>
