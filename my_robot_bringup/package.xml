@@ -15,6 +15,14 @@
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>teleop_twist_joy</exec_depend>
 
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>ros2launch</exec_depend>
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+
   <!-- ROS 2 Dependencies -->
   <depend>rclpy</depend>
   <depend>sensor_msgs</depend>
