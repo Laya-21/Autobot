@@ -20,26 +20,14 @@
 
     <!-- Plugin for Omni-Wheel Drive (Skid-Steer Based Approach) -->
     <gazebo>
-        <plugin name="omni_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
-            <!-- Update Rate -->
-            <update_rate>50</update_rate>
-
-            <!-- Joint Names (adjust these based on your URDF model) -->
-            <left_joint>leftwheel</left_joint>
-            <right_joint>rightwheel</right_joint>
-            <back_joint>frontwheel</back_joint>
-
-            <!-- Kinematic Properties -->
-            <wheel_separation>0.212</wheel_separation> 
-            <wheel_radius>0.1</wheel_radius>
-
-            <!-- Odometry Settings -->
-            <publish_odom>true</publish_odom>
-            <publish_odom_tf>true</publish_odom_tf>
-
-            <odometry_topic>odom</odometry_topic>
-            <odometry_frame>odom</odometry_frame>
-            <robot_base_frame>base_link</robot_base_frame>
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+            <ros2_control>
+            <!-- Use the appropriate hardware interface -->
+            <hardware>
+                <plugin>gazebo_ros2_control/GazeboSystemInterface</plugin>
+            </hardware>
+            </ros2_control>
         </plugin>
     </gazebo>
+
 </robot>

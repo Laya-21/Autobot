@@ -36,6 +36,11 @@ def generate_launch_description():
                      "use_sim_time": True}]
     )
 
+    joint_state_publisher_gui = Node(
+        package="joint_state_publisher_gui",
+        executable="joint_state_publisher_gui",
+    )
+
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             os.path.join(
@@ -52,7 +57,7 @@ def generate_launch_description():
         package="ros_gz_sim",
         executable="create",
         output="screen",
-        arguments=["-topic", "robot_description", "-name", "zimo"]
+        arguments=["-topic", "robot_description", "-name", "my_robot"]
     )
 
     gz_ros2_bridge = Node(
@@ -63,11 +68,21 @@ def generate_launch_description():
         ]
     )
 
+    rviz = Node(
+        package="rviz2",
+        executable="rviz2",
+        name="rviz2",
+        output="screen",
+        arguments=["-d", os.path.join(get_package_share_directory("my_robot_bringup"), "rviz", "display.rviz")]
+    )
+
     return LaunchDescription([
         model_arg,
         gazebo_resource_path,
         robot_state_publisher,
+        joint_state_publisher_gui,
         gazebo,
         gz_spawn_entity,
-        gz_ros2_bridge
+        gz_ros2_bridge,
+        rviz
     ])

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_robot">
+
+    <xacro:property name="PI" value="3.14159" />
+
+    <ros2_control type="system" name="RobotSystem">
+        <xacro:if value="$(arg is_ignition)">
+            <hardware>
+                <plugin>ign_ros2_control/IgnitiionSystem</plugin>
+            </hardware>
+        </xacro:if>
+
+        <xacro:unless value="$(arg is_ignition)">
+            <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+        </xacro:unless>
+
+        <joint name="rightwheel" type="continuous">
+            <command_interface name="velocity" />
+            <state_interface name="velocity" />
+            <state_interface name="position" />
+        </joint>
+
+        <joint name="leftwheel" type="continuous">
+            <command_interface name="velocity" />
+            <state_interface name="velocity" />
+            <state_interface name="position" />
+        </joint>
+
+        <joint name="frontwheel" type="continuous">
+            <command_interface name="velocity" />
+            <state_interface name="velocity" />
+            <state_interface name="position" />
+        </joint>
+
+    </ros2_control>
+</robot>
